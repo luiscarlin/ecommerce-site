@@ -3,6 +3,7 @@ package com.ecommerce.doimain;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,8 +19,10 @@ public class Product {
     @Id
     @GeneratedValue
     private Long id;
-    private Byte[] image;
+    private String imageUrl;
     private Double price;
+
+    @Column(length = 2000)
     private String description;
     private String shortDescription;
 

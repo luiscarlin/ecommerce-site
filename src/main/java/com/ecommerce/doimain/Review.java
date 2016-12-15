@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 @Data
@@ -16,4 +17,10 @@ public class Review {
     private String text;
     private Integer rating;
     private Date date;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Product product;
 }
