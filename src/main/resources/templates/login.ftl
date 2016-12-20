@@ -1,4 +1,5 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
+<#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,6 +31,11 @@
                                 <input  type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <span class="help-block"></span>
+                            <#if error.isPresent()>
+                             <span class="help-block">
+                                <p>The email or password you have entered is invalid</p>
+                             </span>
+                            </#if>
 
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                         </form>
