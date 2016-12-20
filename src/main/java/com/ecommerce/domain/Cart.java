@@ -1,4 +1,4 @@
-package com.ecommerce.doimain;
+package com.ecommerce.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
