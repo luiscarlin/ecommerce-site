@@ -1,8 +1,10 @@
 package com.ecommerce.web;
 
+import com.ecommerce.domain.UserCreateForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,5 +21,15 @@ public class LoginController {
     public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
         LOGGER.debug("Getting login page, error={}", error);
         return new ModelAndView("login", "error", error);
+    }
+
+    @RequestMapping(value="/register", method=RequestMethod.GET)
+    public String registerGet (ModelMap model)
+    {
+        UserCreateForm user = new UserCreateForm();
+
+        model.put("user", user);
+
+        return "register";
     }
 }

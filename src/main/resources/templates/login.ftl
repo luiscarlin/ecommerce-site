@@ -3,87 +3,44 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Log in</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
-              id="bootstrap-css">
+        <title>ECommerce - Log in</title>
         <link rel="stylesheet" href="../css/login.css"/>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/login.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     </head>
     <body>
+        <div class="container">
+            <div class="omb_login">
+                <h3 class="omb_authTitle">Login or <a href="/register">Sign up</a></h3>
+                <div class="row omb_row-sm-offset-3">
+                    <div class="col-xs-12 col-sm-6">
+                        <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" name="email" placeholder="Email Address">
+                            </div>
+                            <span class="help-block"></span>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-login">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <a href="#" class="active" id="login-form-link">Login</a>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input  type="password" class="form-control" name="password" placeholder="Password">
                             </div>
-                            <div class="col-xs-6">
-                                <a href="#" id="register-form-link">Register</a>
-                            </div>
-                        </div>
-                        <hr>
+                            <span class="help-block"></span>
+
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                        </form>
                     </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form id="login-form" action="/login" method="post" role="form" style="display: block;">
-                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                    <div class="form-group">
-                                        <input type="text" name="email" id="email" tabindex="1"
-                                               class="form-control" placeholder="Email Address" value="" required autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2"
-                                               class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <input type="checkbox" tabindex="3" class="" name="remember-me" id="remember-me">
-                                        <label for="remember-me"> Remember Me</label>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4"
-                                                       class="form-control btn btn-login" value="Log In">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                <form id="register-form" action="/register" method="post" role="form"
-                                      style="display: none;">
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control"
-                                               placeholder="Email Address" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="password" id="password" tabindex="2"
-                                               class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" name="confirm-password" id="confirm-password"
-                                               tabindex="2" class="form-control" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-sm-offset-3">
-                                                <input type="submit" name="register-submit" id="register-submit"
-                                                       tabindex="4" class="form-control btn btn-register"
-                                                       value="Register Now">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                </div>
+                <div class="row omb_row-sm-offset-3">
+                    <div class="col-xs-12 col-sm-3">
+                        <label class="checkbox">
+                            <input type="checkbox" value="remember-me">Remember Me</input>
+                        </label>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </body>
 </html>
