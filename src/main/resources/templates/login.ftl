@@ -5,9 +5,11 @@
         <meta charset="utf-8">
         <title>ECommerce - Log in</title>
         <link rel="stylesheet" href="../css/login.css"/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="../js/login.js"></script>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
