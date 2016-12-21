@@ -1,15 +1,14 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="error" type="java.util.Optional<String>" -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>ECommerce - Log in</title>
-        <link rel="stylesheet" href="../css/login.css"/>
+        <link rel="stylesheet" href="../static/css/login.css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="../js/login.js"></script>
+        <script type="application/javascript" src="../static/js/login.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     </head>
     <body>
@@ -31,11 +30,6 @@
                                 <input  type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <span class="help-block"></span>
-                            <#if error.isPresent()>
-                             <span class="help-block">
-                                <p>The email or password you have entered is invalid</p>
-                             </span>
-                            </#if>
 
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                         </form>

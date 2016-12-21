@@ -9,8 +9,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,11 +30,17 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private String passwordHash;
+    private String password;
+
+    @Transient
+    private String passwordConfirm;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @ManyToMany
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Product> products = new HashSet<Product>();

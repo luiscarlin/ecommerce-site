@@ -1,5 +1,5 @@
 <#-- @ftlvariable name="_csrf" type="org.springframework.security.web.csrf.CsrfToken" -->
-<#-- @ftlvariable name="form" type="com.ecommerce.domain.UserCreateForm" -->
+<#-- @ftlvariable name="form" type="com.ecommerce.domain.User" -->
 <#import "/spring.ftl" as spring>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,26 +16,15 @@
 
         <div>
             <label for="email">Email address</label>
-            <input type="email" name="email" id="email" value="${form.email}" required autofocus/>
+            <input type="email" name="email" id="email" required autofocus/>
         </div>
         <div>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required/>
         </div>
         <div>
-            <label for="passwordRepeated">Repeat</label>
-            <input type="password" name="passwordRepeated" id="passwordRepeated" required/>
-        </div>
-        <div>
-            <label for="role">Role</label>
-            <select name="role" id="role" required>
-                <option
-                <#if form.role == 'USER'>selected</#if>
-                >USER</option>
-                <option
-                <#if form.role == 'ADMIN'>selected</#if>
-                >ADMIN</option>
-            </select>
+            <label for="passwordConfirm">Repeat</label>
+            <input type="password" name="passwordConfirm" id="passwordConfirm" required/>
         </div>
         <button type="submit">Save</button>
     </form>
