@@ -18,7 +18,7 @@ public class SecurityServiceImpl implements SecurityService {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
     @Override
     public String findLoggedInUsername() {
@@ -26,12 +26,15 @@ public class SecurityServiceImpl implements SecurityService {
         if (userDetails instanceof UserDetails) {
             return ((UserDetails) userDetails).getUsername();
         }
+        LOGGER.warn("Could not find currently logged in user");
 
         return null;
     }
 
     @Override
     public void autologin(String email, String password) {
+        LOGGER.debug("Trying to auto login user with email={}", email);
+
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
@@ -39,7 +42,9 @@ public class SecurityServiceImpl implements SecurityService {
 
         if (usernamePasswordAuthenticationToken.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-            logger.debug("Auto login user with email={} successfully!", email);
+            LOGGER.debug("Auto login user with email={} successfully", email);
+            return;
         }
+        LOGGER.warn("Auto login for user with email={} failed", email);
     }
 }

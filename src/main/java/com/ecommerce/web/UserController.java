@@ -46,7 +46,9 @@ public class UserController {
         }
 
         try {
+            LOGGER.debug("Persisting user with email={}", userForm.getEmail());
             userService.save(userForm);
+
         } catch (DataIntegrityViolationException e) {
             // probably email already exists - very rare case when multiple admins are adding same user
             // at the same time and form validation has passed for more than one of them.

@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     @Transactional(readOnly = true)
@@ -31,12 +31,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         LOGGER.debug("Authenticating user with email={}", email);
 
-        User user = userRepository.findByEmail(email);
-
-        if (user == null) {
-            LOGGER.debug("User with email={} was not found", email);
-            throw new UsernameNotFoundException(String.format("User with email=%s was not found", email));
-        }
+        User user = userService.findByEmail(email);
 
         LOGGER.debug("Building a new userdetails User for user with email={}", email);
 
