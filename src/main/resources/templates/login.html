@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>ECommerce - Log in</title>
-        <meta charset="utf-8" />
         <link rel="stylesheet" href="../static/css/login.css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
@@ -23,13 +22,13 @@
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="email" placeholder="Email Address"/>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"/>
                             </div>
                             <span class="help-block"></span>
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input  type="password" class="form-control" name="password" placeholder="Password"/>
+                                <input  type="password" class="form-control" id = "password" name="password" placeholder="Password"/>
                             </div>
                             <span class="help-block"></span>
 

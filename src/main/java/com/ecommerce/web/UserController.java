@@ -55,8 +55,6 @@ public class UserController {
             return "register";
         }
 
-        System.out.println("hello");
-
         securityService.autologin(userForm.getEmail(), userForm.getPasswordConfirm());
 
         return "redirect:/dashboard";
