@@ -2,7 +2,6 @@ package com.ecommerce.service;
 
 import com.ecommerce.domain.Role;
 import com.ecommerce.domain.User;
-import com.ecommerce.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

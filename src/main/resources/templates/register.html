@@ -1,25 +1,25 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Create a new user</title>
+        <title>Create an account</title>
     </head>
     <body>
-        <h1>Register a new user</h1>
+        <h2>Create your account</h2>
 
-        <form role="form" name="form" th:action="@{/register}" method="post">
+        <form th:action="@{/register}" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <div>
-                <label for="email">Email address</label>
-                <input type="email" name="email" id="email" th:field="${form.email}" required="true" autofocus="true"/>
+                <input type="email" name="email" id="email" th:field="${userForm.email}" placeholder="Email Address" required="true" autofocus="true"/>
+                <p th:if="${#fields.hasErrors('userForm.email')}" th:errors="*{userForm.email}"></p>
             </div>
             <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" th:field="${form.password}" required="true"/>
+                <input type="password" name="password" id="password" th:field="${userForm.password}" placeholder="Password" required="true"/>
+                <p th:if="${#fields.hasErrors('userForm.password')}" th:errors="*{userForm.password}"></p>
             </div>
             <div>
-                <label for="passwordConfirm">Repeat</label>
-                <input type="password" name="passwordConfirm" id="passwordConfirm" th:field="${form.passwordConfirm}" required="true"/>
+                <input type="password" name="passwordConfirm" id="passwordConfirm" th:field="${userForm.passwordConfirm}" placeholder="Confirm Password" required="true"/>
+                <p th:if="${#fields.hasErrors('userForm.passwordConfirm')}" th:errors="*{userForm.passwordConfirm}"></p>
             </div>
             <button type="submit">Save</button>
         </form>

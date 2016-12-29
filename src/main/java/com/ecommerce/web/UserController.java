@@ -31,14 +31,16 @@ public class UserController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerGet(Model model) {
-        model.addAttribute("form", new User());
+        model.addAttribute("userForm", new User());
 
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerPost(@ModelAttribute("form") User userForm, BindingResult bindingResult, Model model) {
+    public String registerPost(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
         userValidator.validate(userForm, bindingResult);
+
+        LOGGER.debug("Validation errors={}", bindingResult.getAllErrors().toString());
 
         if (bindingResult.hasErrors()) {
             LOGGER.warn("Failed with {}", bindingResult.getErrorCount());
