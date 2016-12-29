@@ -11,15 +11,15 @@
 
             <div>
                 <input type="email" name="email" id="email" th:field="${userForm.email}" placeholder="Email Address" required="true" autofocus="true"/>
-                <p th:if="${#fields.hasErrors('userForm.email')}" th:errors="*{userForm.email}"></p>
+                <span th:if="${#fields.hasErrors('userForm.email')}" th:errors="*{userForm.email}">validation email</span>
             </div>
             <div>
                 <input type="password" name="password" id="password" th:field="${userForm.password}" placeholder="Password" required="true"/>
-                <p th:if="${#fields.hasErrors('userForm.password')}" th:errors="*{userForm.password}"></p>
+                <span th:if="${#fields.hasErrors('userForm.password')}" th:errors="*{userForm.password}">validation password</span>
             </div>
             <div>
                 <input type="password" name="passwordConfirm" id="passwordConfirm" th:field="${userForm.passwordConfirm}" placeholder="Confirm Password" required="true"/>
-                <p th:if="${#fields.hasErrors('userForm.passwordConfirm')}" th:errors="*{userForm.passwordConfirm}"></p>
+                <span th:if="${#fields.hasErrors('userForm.passwordConfirm')}" th:errors="*{userForm.passwordConfirm}">validation password confirm</span>
             </div>
             <button type="submit">Save</button>
         </form>
