@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save(User user) {
+    public User save(User user) {
         LOGGER.debug("Persisting user with email={}", user.getEmail());
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -38,9 +38,10 @@ public class UserServiceImpl implements UserService {
 
         if (savedUser != null && (savedUser.getEmail().equals(user.getEmail()))) {
             LOGGER.debug("User with email={} was persisted successfully!", user.getEmail());
-            return;
         }
         LOGGER.warn("User with email={} was not persisted", user.getEmail());
+
+        return savedUser;
     }
 
     @Override
@@ -52,7 +53,6 @@ public class UserServiceImpl implements UserService {
             LOGGER.warn("User with email={} was not found", email);
             throw new UsernameNotFoundException(String.format("User with email=%s was not found", email));
         }
-
         return foundUser;
     }
 }
