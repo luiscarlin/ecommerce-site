@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>ECommerce - Log in</title>
+        <title>eCommerce: Log in</title>
         <link rel="stylesheet" href="../static/css/login.css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
@@ -10,12 +10,11 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <p th:text="${message}"></p>
-        <p th:text="${error}"></p>
-
         <div class="container">
             <div class="omb_login">
                 <h3 class="omb_authTitle">Login or <a th:href="@{/register}">Sign up</a></h3>
+
+                <span class="help-block" th:text="${message}"></span>
                 <div class="row omb_row-sm-offset-3">
                     <div class="col-xs-12 col-sm-6">
                         <form class="omb_loginForm" th:action="@{/login}" autocomplete="off" method="post">
@@ -25,12 +24,11 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"/>
                             </div>
                             <span class="help-block"></span>
-
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                 <input  type="password" class="form-control" id = "password" name="password" placeholder="Password"/>
                             </div>
-                            <span class="help-block"></span>
+                            <span class="help-block" th:text="${error}"></span>
 
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                         </form>
