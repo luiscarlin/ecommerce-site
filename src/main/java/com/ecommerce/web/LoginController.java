@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class UserController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+public class LoginController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserService userService;
@@ -73,10 +72,5 @@ public class UserController {
             model.addAttribute("message", "You have been logged out successfully");
 
         return "login";
-    }
-
-    @RequestMapping(value = {"/", "/dashboard"}, method = RequestMethod.GET)
-    public String dashboard(Model model) {
-        return "dashboard";
     }
 }
