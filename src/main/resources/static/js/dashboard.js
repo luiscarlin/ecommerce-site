@@ -19,15 +19,39 @@ $(function () {
 
     });
 
-    $( "#slider-range" ).slider({
-          range: true,
-          min: 0,
-          max: 500,
-          values: [ 75, 300 ],
-          slide: function( event, ui ) {
+   $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
             $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-          }
-        });
-        $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-          " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        }
+   });
+   $( "#amount" ).val(
+       "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $"
+           + $( "#slider-range" ).slider( "values", 1 ) );
+
+   $("body").on("click", "button[id*='createProduct']", function() {
+       var id = $(this).prop("id");
+
+       id = id.split("-")[1];
+
+       $("#placeholderCard1-" + id).addClass("hidden");
+       $("#placeholderCard2-" + id).removeClass("hidden");
+       //createPlaceholderCard();
+   });
 });
+
+function createPlaceholderCard() { 
+    $("#products").append(
+        "<div id=\"placeholderCard1-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step1\">"+
+        "    <button id=\"createProduct-0\" class=\"btn btn-primary btn-block\">Create Product</button>"+
+        "</div>"+
+        "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step2 hidden\">"+
+        "    <p>Please type in the image URL: </p>"+
+        "    <input type=\"text\" id=\"imageUrl\" placeholder=\"Image URL\"/>"+
+        "    <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
+        "</div>"
+    )
+}

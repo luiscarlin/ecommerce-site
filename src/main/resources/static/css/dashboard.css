@@ -343,7 +343,7 @@
   #search .panel-body .navbar-form .form-group {
     margin: 0;
   }
-.navbar-header {
+  .navbar-header {
     /* this is probably redundant */
     position: fixed;
     z-index: 3;
@@ -353,4 +353,13 @@
   #dropdown .panel-body .navbar-nav {
     margin: 0;
   }
+}
+
+.card {
+  border: 1px dashed;
+  height: 15em;
+}
+
+.card button[id*='createProduct'] {
+  margin-top: 6em;
 }
