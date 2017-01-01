@@ -45,15 +45,16 @@ $(function () {
            type: "POST",
            success: function(product) {
                console.log(product);
+               var productId = product.id;
 
                $("[id*='-0']").each(function() {
-                   id = $(this).prop("id");
-                   id = id.replace("\-0", "-" + product.id);
-                   $(this).prop("id", id);
+                   var id = $(this).prop("id");
+                   var updatedId = id.replace("\-0", "-" + productId);
+                   $(this).prop("id", updatedId);
                })
 
-               $("#placeholderCard1-" + product.id).addClass("hidden");
-               $("#placeholderCard2-" + product.id).removeClass("hidden");
+               $("#placeholderCard1-" + productId).addClass("hidden");
+               $("#placeholderCard2-" + productId).removeClass("hidden");
 
                createPlaceholderCard();
            },
