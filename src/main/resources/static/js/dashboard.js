@@ -33,6 +33,7 @@ $(function () {
            + $( "#slider-range" ).slider( "values", 1 ) );
 
    $("body").on("click", "button[id*='createProduct']", function() {
+
        var id = $(this).prop("id");
 
        id = id.split("-")[1];
