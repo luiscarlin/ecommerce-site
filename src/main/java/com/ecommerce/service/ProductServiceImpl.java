@@ -15,4 +15,9 @@ public class ProductServiceImpl implements ProductService {
     public Product save(Product product) {
         return productRepository.save(product);
     }
+
+    @Override
+    public Product findOne(Long productId) throws IllegalArgumentException {
+        return productRepository.findOne(productId);
+    }
 }

@@ -55,15 +55,35 @@ $(function () {
 
                $("#placeholderCard1-" + productId).addClass("hidden");
                $("#placeholderCard2-" + productId).removeClass("hidden");
-
-               createPlaceholderCard();
            },
            error: function() {
                console.log("error");
            }
        });
    });
+
+   $("body").on("click", "button[id*='addImageUrl']", function() {
+       var productId = getProductId($(this));
+
+       $.ajax({
+          url: "dashboard/products/" + productId,
+          type: "POST",
+          data: {imageUrl: $("#imageUrl-" + productId).val()},
+          success: function(product) {
+              console.log(product);
+              createPlaceholderCard();
+          },
+          error: function() {
+              console.log("error");
+          }
+       });
+   });
 });
+
+function getProductId(obj) {
+    var id = $(obj).prop("id");
+    return id.split("-")[1];
+}
 
 function createPlaceholderCard() { 
     $("#products").append(
@@ -72,7 +92,7 @@ function createPlaceholderCard() {
         "</div>"+
         "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step2 hidden\">"+
         "    <p>Please type in the image URL: </p>"+
-        "    <input type=\"text\" id=\"imageUrl\" placeholder=\"Image URL\"/>"+
+        "    <input type=\"text\" id=\"imageUrl-0\" placeholder=\"Image URL\"/>"+
         "    <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"
     )
