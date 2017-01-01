@@ -1,4 +1,11 @@
 $(function () {
+    // set csrf token for all ajax requests
+    var token = $("input[name='_csrf']").val();
+    var header = "X-CSRF-TOKEN";
+    $(document).ajaxSend(function(e, xhr, options) {
+        xhr.setRequestHeader(header, token);
+    });
+
     $('.navbar-toggle').click(function () {
         $('.navbar-nav').toggleClass('slide-in');
         $('.side-body').toggleClass('body-slide-in');
@@ -33,14 +40,27 @@ $(function () {
            + $( "#slider-range" ).slider( "values", 1 ) );
 
    $("body").on("click", "button[id*='createProduct']", function() {
+       $.ajax({
+           url: "dashboard/products",
+           type: "POST",
+           success: function(product) {
+               console.log(product);
 
-       var id = $(this).prop("id");
+               $("[id*='-0']").each(function() {
+                   id = $(this).prop("id");
+                   id = id.replace("\-0", "-" + product.id);
+                   $(this).prop("id", id);
+               })
 
-       id = id.split("-")[1];
+               $("#placeholderCard1-" + product.id).addClass("hidden");
+               $("#placeholderCard2-" + product.id).removeClass("hidden");
 
-       $("#placeholderCard1-" + id).addClass("hidden");
-       $("#placeholderCard2-" + id).removeClass("hidden");
-       //createPlaceholderCard();
+               createPlaceholderCard();
+           },
+           error: function() {
+               console.log("error");
+           }
+       });
    });
 });
 
