@@ -64,11 +64,32 @@ $(function () {
 
    $("body").on("click", "button[id*='addImageUrl']", function() {
        var productId = getProductId($(this));
+       var imageUrlVal = $("#imageUrl-" + productId).val();
 
        $.ajax({
           url: "dashboard/products/" + productId,
           type: "POST",
-          data: {fieldName: "imageUrl", fieldValue: $("#imageUrl-" + productId).val()},
+          data: {fieldName: "imageUrl", fieldValue: imageUrlVal},
+          success: function(product) {
+              console.log(product);
+
+              $("#placeholderCard2-" + productId).addClass("hidden");
+              $("#placeholderCard3-" + productId).removeClass("hidden");
+          },
+          error: function() {
+              console.log("error");
+          }
+       });
+   });
+
+   $("body").on("click", "button[id*='addShortDescription']", function() {
+       var productId = getProductId($(this));
+       var shortDescriptionVal = $("#shortDescription-" + productId).val();
+
+       $.ajax({
+          url: "dashboard/products/" + productId,
+          type: "POST",
+          data: {fieldName: "shortDescription", fieldValue: shortDescriptionVal},
           success: function(product) {
               console.log(product);
               createPlaceholderCard();
@@ -91,9 +112,14 @@ function createPlaceholderCard() {
         "    <button id=\"createProduct-0\" class=\"btn btn-primary btn-block\">Create Product</button>"+
         "</div>"+
         "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step2 hidden\">"+
-        "    <p>Please type in the image URL: </p>"+
+        "    <p>Please type in the image URL:</p>"+
         "    <input type=\"text\" id=\"imageUrl-0\" placeholder=\"Image URL\"/>"+
         "    <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
+        "</div>"+
+        "<div id=\"placeholderCard3-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step3 hidden\">"+
+        "    <p>Please type in a short description:</p>"+
+        "    <input type=\"text\" id=\"shortDescription-0\" placeholder=\"short product description\"/>"+
+        "    <button id=\"addShortDescription-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"
     )
 }
