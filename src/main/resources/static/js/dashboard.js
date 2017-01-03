@@ -68,7 +68,7 @@ $(function () {
        $.ajax({
           url: "dashboard/products/" + productId,
           type: "POST",
-          data: {imageUrl: $("#imageUrl-" + productId).val()},
+          data: {fieldName: "imageUrl", fieldValue: $("#imageUrl-" + productId).val()},
           success: function(product) {
               console.log(product);
               createPlaceholderCard();

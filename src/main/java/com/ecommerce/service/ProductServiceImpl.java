@@ -5,6 +5,8 @@ import com.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -19,5 +21,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findOne(Long productId) throws IllegalArgumentException {
         return productRepository.findOne(productId);
+    }
+
+    @Override
+    public Product updateField(Product product, String fieldName, String fieldValue)
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        return SaveHelperService.save(Product.class, fieldName, fieldValue, product, productRepository);
     }
 }
