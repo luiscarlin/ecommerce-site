@@ -30,12 +30,12 @@ public class Product {
     private String description;
     private String shortDescription;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", fetch = FetchType.EAGER)
     private Set<Review> reviews = new HashSet<Review>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products", fetch = FetchType.EAGER)
     private Set<Cart> carts = new HashSet<Cart>();
 }
