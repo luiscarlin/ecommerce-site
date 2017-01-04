@@ -13,7 +13,7 @@ public class SaveHelperService {
     private static final Logger LOGGER = LoggerFactory.getLogger(SaveHelperService.class);
 
     public static <T> T save(Class<T> clazz, String fieldName, String fieldValue, T instance, JpaRepository<T, Long> repo)
-            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, IllegalArgumentException {
+            throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
         fieldName = StringUtils.capitalize(fieldName);
 

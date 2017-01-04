@@ -111,6 +111,8 @@ $(function () {
           data: {fieldName: "price", fieldValue: priceVal},
           success: function(product) {
               console.log(product);
+              $("#placeholderCard4-" + productId).addClass("hidden");
+              showFinishedProduct(product);
               createPlaceholderCard();
           },
           error: function() {
@@ -123,6 +125,17 @@ $(function () {
 function getProductId(obj) {
     var id = $(obj).prop("id");
     return id.split("-")[1];
+}
+
+function showFinishedProduct(product) {
+    $("#placeholderCard4-"+product.id).after("<div class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card\" id=\"productCard-"+product.id+"\">" +
+  		"<img class=\"center-block\" src='"+product.imageUrl+"'/>" +
+  		"<button class=\"btn btn-info center-block overlayEditButton hidden\" id=\"editButton-"+product.id+"\">Edit</button>"+
+        "<button class=\"btn btn-danger center-block overlayDeleteButton hidden\" id=\"deleteButton-" + product.id + "\">Delete</button>"+
+  		"<p>"+product.shortDescription+"</p>" +
+  		"$" + product.price +
+  		"</div>"
+  	);
 }
 
 function createPlaceholderCard() { 
