@@ -92,6 +92,25 @@ $(function () {
           data: {fieldName: "shortDescription", fieldValue: shortDescriptionVal},
           success: function(product) {
               console.log(product);
+              $("#placeholderCard3-" + productId).addClass("hidden");
+              $("#placeholderCard4-" + productId).removeClass("hidden");
+          },
+          error: function() {
+              console.log("error");
+          }
+       });
+   });
+
+   $("body").on("click", "button[id*='addPrice']", function() {
+       var productId = getProductId($(this));
+       var priceVal = $("#price-" + productId).val();
+
+       $.ajax({
+          url: "dashboard/products/" + productId,
+          type: "POST",
+          data: {fieldName: "price", fieldValue: priceVal},
+          success: function(product) {
+              console.log(product);
               createPlaceholderCard();
           },
           error: function() {
@@ -120,6 +139,11 @@ function createPlaceholderCard() {
         "    <p>Please type in a short description:</p>"+
         "    <input type=\"text\" id=\"shortDescription-0\" placeholder=\"short product description\"/>"+
         "    <button id=\"addShortDescription-0\" class=\"btn btn-primary btn-block\">Next</button>"+
+        "</div>"+
+        "<div id=\"placeholderCard4-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step4 hidden\">"+
+        "    <p>Please type in a price:</p>"+
+        "    <input type=\"text\" id=\"price-0\" placeholder=\"$50\"/>"+
+        "    <button id=\"addPrice-0\" class=\"btn btn-primary btn-block\">Finish</button>"+
         "</div>"
     )
 }
