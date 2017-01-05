@@ -39,6 +39,7 @@ public class User {
     private String password;
 
     @Transient
+    @JsonIgnore
     private String passwordConfirm;
 
     @Column(nullable = false)
