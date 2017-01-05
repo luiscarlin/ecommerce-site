@@ -27,6 +27,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    private SecurityService securityService;
+
     @Override
     public User save(User user) {
         LOGGER.debug("Persisting user with email={}", user.getEmail());
@@ -54,5 +57,24 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(String.format("User with email=%s was not found", email));
         }
         return foundUser;
+    }
+
+    @Override
+    public User getLoggedInUser() throws UsernameNotFoundException {
+        String loggedInEmail = securityService.findLoggedInUsername();
+
+        if (loggedInEmail == null)  {
+            LOGGER.warn("There is no logged in user at the moment");
+            return null;
+        }
+
+        User loggedInUser = userRepository.findByEmail(loggedInEmail);
+
+        if (loggedInUser == null) {
+            LOGGER.warn("User with email={} was not found", loggedInEmail);
+            throw new UsernameNotFoundException(String.format("User with email=%s was not found", loggedInEmail));
+        }
+
+        return loggedInUser;
     }
 }

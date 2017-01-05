@@ -26,11 +26,10 @@ public class ProductController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
-    public Product addProduct(Principal principal) {
+    public Product addProduct() {
+        User loggedInUser = userService.getLoggedInUser();
+
         Product productToAdd = new Product();
-
-        User loggedInUser = userService.findByEmail(principal.getName());
-
         productToAdd.setUser(loggedInUser);
 
         return productService.save(productToAdd);
