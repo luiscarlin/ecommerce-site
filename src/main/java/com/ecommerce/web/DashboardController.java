@@ -22,9 +22,9 @@ public class DashboardController {
 
     @RequestMapping(value = {"/", "/dashboard"}, method = RequestMethod.GET)
     public String dashboard(Model model) {
-        List<Product> products = productService.findByUser(userService.getLoggedInUser());
+        //List<Product> products = productService.findByUser(userService.getLoggedInUser());
 
-        model.addAttribute("products", products);
+        //model.addAttribute("products", products);
 
         return "dashboard";
     }

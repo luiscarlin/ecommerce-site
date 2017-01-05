@@ -113,7 +113,7 @@ $(function () {
               console.log(product);
               $("#placeholderCard4-" + productId).addClass("hidden");
               showFinishedProduct(product);
-              createPlaceholderCard();
+          //    createPlaceholderCard();
           },
           error: function() {
               console.log("error");
@@ -128,7 +128,8 @@ function getProductId(obj) {
 }
 
 function showFinishedProduct(product) {
-    $("#placeholderCard4-"+product.id).after("<div class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card\" id=\"productCard-"+product.id+"\">" +
+    $("#placeholderCard4-"+product.id).after(
+        "<div class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card\" id=\"productCard-"+product.id+"\">" +
   		"<img class=\"center-block\" src='"+product.imageUrl+"'/>" +
   		"<button class=\"btn btn-info center-block overlayEditButton hidden\" id=\"editButton-"+product.id+"\">Edit</button>"+
         "<button class=\"btn btn-danger center-block overlayDeleteButton hidden\" id=\"deleteButton-" + product.id + "\">Delete</button>"+
@@ -140,20 +141,20 @@ function showFinishedProduct(product) {
 
 function createPlaceholderCard() { 
     $("#products").append(
-        "<div id=\"placeholderCard1-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step1\">"+
+        "<div id=\"placeholderCard1-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card\">"+
         "    <button id=\"createProduct-0\" class=\"btn btn-primary btn-block\">Create Product</button>"+
         "</div>"+
-        "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step2 hidden\">"+
+        "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card hidden\">"+
         "    <p>Please type in the image URL:</p>"+
         "    <input type=\"text\" id=\"imageUrl-0\" placeholder=\"Image URL\"/>"+
         "    <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"+
-        "<div id=\"placeholderCard3-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step3 hidden\">"+
+        "<div id=\"placeholderCard3-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card hidden\">"+
         "    <p>Please type in a short description:</p>"+
         "    <input type=\"text\" id=\"shortDescription-0\" placeholder=\"short product description\"/>"+
         "    <button id=\"addShortDescription-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"+
-        "<div id=\"placeholderCard4-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card step4 hidden\">"+
+        "<div id=\"placeholderCard4-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 card hidden\">"+
         "    <p>Please type in a price:</p>"+
         "    <input type=\"text\" id=\"price-0\" placeholder=\"$50\"/>"+
         "    <button id=\"addPrice-0\" class=\"btn btn-primary btn-block\">Finish</button>"+
