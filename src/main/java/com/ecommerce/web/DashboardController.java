@@ -1,6 +1,7 @@
 package com.ecommerce.web;
 
 import com.ecommerce.domain.Product;
+import com.ecommerce.domain.User;
 import com.ecommerce.service.ProductService;
 import com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,18 @@ public class DashboardController {
 
     @RequestMapping(value = {"/", "/dashboard"}, method = RequestMethod.GET)
     public String dashboard(Model model) {
-        //List<Product> products = productService.findByUser(userService.getLoggedInUser());
+        //=> where the problem is!!
+        User foundUser = userService.getLoggedInUser();
 
-        //model.addAttribute("products", products);
+        System.out.println(">>user found: " + foundUser.getEmail());
+
+        List<Product> products = productService.findByUser(foundUser);
+
+        System.out.println(">>list of products found: ");
+        products.forEach(product -> System.out.println(product.getId()));
+
+
+        model.addAttribute("products", products);
 
         return "dashboard";
     }

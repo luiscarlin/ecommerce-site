@@ -113,7 +113,7 @@ $(function () {
               console.log(product);
               $("#placeholderCard4-" + productId).addClass("hidden");
               showFinishedProduct(product);
-          //    createPlaceholderCard();
+              createPlaceholderCard();
           },
           error: function() {
               console.log("error");
