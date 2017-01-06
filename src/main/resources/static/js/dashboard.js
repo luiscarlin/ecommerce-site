@@ -39,6 +39,43 @@ $(function () {
        "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $"
            + $( "#slider-range" ).slider( "values", 1 ) );
 
+  $("body").on("click", "button[id*='editButton']", function () {
+      var id = $(this).attr("id");
+      id = id.split("-")[1];
+
+      window.location.href = "/dashboard/products/" + id;
+  });
+
+  $("body").on("click", "button[id*='deleteButton']", function () {
+      var areYouSure = confirm("Are you sure you wish to delete this product?");
+
+      if (areYouSure == true)
+      {
+        var id = $(this).attr("id");
+        id = id.split("-")[1];
+
+        $.post({
+          url: "/dashboard/products/" + id + "/delete",
+          success : function () {
+            location.reload();
+          }
+        });
+      }
+  });
+
+  $("body").on({
+    mouseenter: function () {
+      $(this).css("background-color", "rgb(228, 228, 228)");
+      $(this).children("button[id*='editButton']").removeClass("hidden");
+      $(this).children("button[id*='deleteButton']").removeClass("hidden");
+    },
+    mouseleave: function () {
+      $(this).css("background-color", "rgb(255, 255, 255)");
+      $(this).children("button[id*='editButton']").addClass("hidden");
+      $(this).children("button[id*='deleteButton']").addClass("hidden");
+    }
+  }, "div[id*='productCard']");
+
    $("body").on("click", "button[id*='createProduct']", function() {
        $.ajax({
            url: "dashboard/products",

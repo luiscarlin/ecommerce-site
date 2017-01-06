@@ -6,6 +6,7 @@ import com.ecommerce.service.ProductService;
 import com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,5 +42,13 @@ public class ProductController {
         Product productToUpdate = productService.findOne(productId);
 
         return productService.updateField(productToUpdate, fieldName, fieldValue);
+    }
+
+    @RequestMapping(value = "{productId}", method = RequestMethod.GET)
+    public String editProduct(@PathVariable Long productId, ModelMap model) {
+        Product productToEdit = productService.findOne(productId);
+        model.put("product", productToEdit);
+
+        return "product";
     }
 }
