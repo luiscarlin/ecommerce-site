@@ -355,11 +355,28 @@
   }
 }
 
-.card {
+.placeholderCard {
   border: 1px dashed;
   height: 15em;
 }
 
-.card button[id*='createProduct'] {
+.placeholderCard button[id*='createProduct'] {
   margin-top: 6em;
+}
+
+.placeholderCard img {
+  max-height: 8em;
+  max-width: 8em;
+}
+
+.overlayEditButton {
+  position: relative;
+  top: -4em;
+  margin-bottom: -2em;
+}
+
+.overlayDeleteButton {
+  position: relative;
+  top: 0em;
+  margin-bottom: -2.85em;
 }
