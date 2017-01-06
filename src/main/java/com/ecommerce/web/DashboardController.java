@@ -4,6 +4,8 @@ import com.ecommerce.domain.Product;
 import com.ecommerce.domain.User;
 import com.ecommerce.service.ProductService;
 import com.ecommerce.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,8 @@ import java.util.List;
 @Controller
 public class DashboardController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(DashboardController.class);
+
     @Autowired
     private ProductService productService;
 
@@ -23,16 +27,10 @@ public class DashboardController {
 
     @RequestMapping(value = {"/", "/dashboard"}, method = RequestMethod.GET)
     public String dashboard(Model model) {
-        //=> where the problem is!!
         User foundUser = userService.getLoggedInUser();
 
-        System.out.println(">>user found: " + foundUser.getEmail());
-
         List<Product> products = productService.findByUser(foundUser);
-
-        System.out.println(">>list of products found: ");
-        products.forEach(product -> System.out.println(product.getId()));
-
+        LOGGER.debug("Loading number of products={} for user={} into the view", products.size(), foundUser.getEmail());
 
         model.addAttribute("products", products);
 
