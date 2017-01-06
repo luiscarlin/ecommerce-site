@@ -14,6 +14,7 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/dashboard.js"></script>
     </head>
     <body>
         <form id="logoutForm" method="post" th:action="@{/logout}">
@@ -113,27 +114,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div id="products">
-                        <div id="placeholderCard1-0" class="col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard">
-                            <button id="createProduct-0" class="btn btn-primary btn-block">Create Product</button>
-                        </div>
-
-                        <div id="placeholderCard2-0" class="col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden">
-                            <p>Please type in the image URL:</p>
-                            <input type="text" id="imageUrl-0" placeholder="image url"/>
-                            <button id="addImageUrl-0" class="btn btn-primary btn-block">Next</button>
-                        </div>
-
-                        <div id="placeholderCard3-0" class="col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden">
-                            <p>Please type in a short description:</p>
-                            <input type="text" id="shortDescription-0" placeholder="short product description"/>
-                            <button id="addShortDescription-0" class="btn btn-primary btn-block">Next</button>
-                        </div>
-
-                        <div id="placeholderCard4-0" class="col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden">
-                            <p>Please type in a price:</p>
-                            <input type="text" id="price-0" placeholder="$50"/>
-                            <button id="addPrice-0" class="btn btn-primary btn-block">Finish</button>
-                        </div>
+                        <script>createPlaceholderCard();</script>
 
                         <div th:each="product : ${products}">
                             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard" th:id="${'productCard-'+{product.id}}">
@@ -148,6 +129,5 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="/js/dashboard.js"></script>
     </body>
 </html>
