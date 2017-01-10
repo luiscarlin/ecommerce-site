@@ -1,1 +1,54 @@
-welcome to the edit page
+<!doctype HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>eCommerce: Dashboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/css/product.css"/>
+
+        <!-- js -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/js/product.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header"/>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive"/>
+                </div>
+                <form id="formEdit" th:action="${product.id + '/edit'}" method="post" th:object="${product}">
+                    <input type="hidden" th:field="${product.id}"/>
+                    <div class="col-xs-12 col-sm-5">
+                        <div class="form-group">
+                            <label for="imageUrl1">Image URL</label>
+                            <input type="text" class="form-control" id="imageUrl1" th:field="*{imageUrl}" placeholder="Provide an image URL"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="shortDescription1">Short Description</label>
+                            <input type="text" class="form-control" id="shortDescription1" th:field="*{shortDescription}" placeholder="Provide a short description"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="longDescription1">Long Description</label>
+                            <textarea class="form-control" id="longDescription1" th:field="*{description}" placeholder="Provide a long description"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-offset-1 col-sm-3">
+                        <div class="form-group form-inline">
+                            <label for="price1">Price $</label>
+                            <input type="text" size="5" class="form-control" id="price1" th:field="*{price}" placeholder="Enter a price"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row top-buffer">
+                <button id="saveProduct" class="btn btn-primary">Save Product</button>
+            </div>
+        </div>
+    </body>
+</html>
