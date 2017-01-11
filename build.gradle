@@ -37,6 +37,10 @@ clean << {
     project.file('app.jar').delete()
 }
 
+bootRun {
+    args = ["--spring.profiles.active=dev"]
+}
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-security')
