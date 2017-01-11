@@ -37,6 +37,7 @@ clean << {
     project.file('app.jar').delete()
 }
 
+// always run the dev version when doing bootRun
 bootRun {
     args = ["--spring.profiles.active=dev"]
 }
