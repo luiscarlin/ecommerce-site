@@ -44,6 +44,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok:1.16.10')
     runtime('org.springframework.boot:spring-boot-devtools')
-    runtime('org.hsqldb:hsqldb')
+    runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
