@@ -367,6 +367,7 @@
 .placeholderCard img {
   max-height: 8em;
   max-width: 8em;
+  margin-top: 1em;
 }
 
 .overlayEditButton {
