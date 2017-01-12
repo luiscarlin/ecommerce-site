@@ -380,3 +380,7 @@
   top: 0em;
   margin-bottom: -2.85em;
 }
+
+.inputEmpty {
+  border-color: red;
+}

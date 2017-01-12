@@ -103,6 +103,10 @@ $(function () {
        var productId = getProductId($(this));
        var imageUrlVal = $("#imageUrl-" + productId).val();
 
+       if (!imageUrlVal) {
+           $("#imageUrl-" + productId).addClass("inputEmpty");
+           return
+       }
        $.ajax({
           url: "dashboard/products/" + productId,
           type: "POST",
@@ -123,6 +127,11 @@ $(function () {
        var productId = getProductId($(this));
        var shortDescriptionVal = $("#shortDescription-" + productId).val();
 
+       if (!shortDescriptionVal) {
+           $("#shortDescription-" + productId).addClass("inputEmpty");
+           return
+       }
+
        $.ajax({
           url: "dashboard/products/" + productId,
           type: "POST",
@@ -141,6 +150,11 @@ $(function () {
    $("body").on("click", "button[id*='addPrice']", function() {
        var productId = getProductId($(this));
        var priceVal = $("#price-" + productId).val();
+
+       if (!priceVal || isNaN(priceVal)) {
+           $("#price-" + productId).addClass("inputEmpty");
+           return
+       }
 
        $.ajax({
           url: "dashboard/products/" + productId,
