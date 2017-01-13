@@ -58,4 +58,18 @@ public class ProductController {
 
         return "redirect:/dashboard/products/" + product.getId();
     }
+
+    @RequestMapping(value = "{productId}/delete", method = RequestMethod.POST)
+    public String deleteProduct(@PathVariable Long productId, ModelMap model) {
+
+        Product productToDelete = productService.findOne(productId);
+
+        // remove product from the user
+        productToDelete.getUser().getProducts().remove(productToDelete);
+
+        // delete the product
+        productService.delete(productToDelete);
+
+        return "redirect:/dashboard";
+    }
 }

@@ -11,4 +11,5 @@ public interface ProductService {
     Product findOne(Long productId) throws IllegalArgumentException;
     Product updateField(Product product, String fieldName, String fieldValue)throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
     List<Product> findByUser(User user);
+    void delete(Product product);
 }
