@@ -47,7 +47,8 @@
                 </form>
             </div>
             <div class="row top-buffer">
-                <button id="saveProduct" class="btn btn-primary">Save Product</button>
+                <button id="saveProduct" class="btn btn-primary">Save</button>
+                <button th:id="${'deleteProduct-'+{product.id}}" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </body>
