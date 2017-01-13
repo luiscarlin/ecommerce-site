@@ -180,7 +180,7 @@ function getProductId(obj) {
 
 function showFinishedProduct(product) {
     $("#placeholderCard4-"+product.id).after(
-        "<div class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard\" id=\"productCard-"+product.id+"\">" +
+        "<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2 placeholderCard\" id=\"productCard-"+product.id+"\">" +
   		"<img class=\"center-block\" src='"+product.imageUrl+"'/>" +
   		"<button class=\"btn btn-success center-block overlayEditButton hidden\" id=\"editButton-"+product.id+"\">Edit</button>"+
         "<button class=\"btn btn-danger center-block overlayDeleteButton hidden\" id=\"deleteButton-" + product.id + "\">Delete</button>"+
@@ -192,20 +192,20 @@ function showFinishedProduct(product) {
 
 function createPlaceholderCard() { 
     $("#products").append(
-        "<div id=\"placeholderCard1-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard\">"+
+        "<div id=\"placeholderCard1-0\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2 placeholderCard\">"+
         "    <button id=\"createProduct-0\" class=\"btn btn-primary btn-block\">Create Product</button>"+
         "</div>"+
-        "<div id=\"placeholderCard2-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden\">"+
+        "<div id=\"placeholderCard2-0\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2 placeholderCard hidden\">"+
         "    <p>Please type in the image URL:</p>"+
         "    <input type=\"text\" id=\"imageUrl-0\" placeholder=\"Image URL\"/>"+
         "    <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"+
-        "<div id=\"placeholderCard3-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden\">"+
+        "<div id=\"placeholderCard3-0\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2 placeholderCard hidden\">"+
         "    <p>Please type in a short description:</p>"+
         "    <input type=\"text\" id=\"shortDescription-0\" placeholder=\"short product description\"/>"+
         "    <button id=\"addShortDescription-0\" class=\"btn btn-primary btn-block\">Next</button>"+
         "</div>"+
-        "<div id=\"placeholderCard4-0\" class=\"col-xs-12 col-sm-6 col-md-3 col-lg-2 placeholderCard hidden\">"+
+        "<div id=\"placeholderCard4-0\" class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2 placeholderCard hidden\">"+
         "    <p>Please type in a price:</p>"+
         "    <input type=\"text\" id=\"price-0\" placeholder=\"$50\"/>"+
         "    <button id=\"addPrice-0\" class=\"btn btn-primary btn-block\">Finish</button>"+
