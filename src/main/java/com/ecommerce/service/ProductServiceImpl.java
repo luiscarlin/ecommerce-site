@@ -4,6 +4,9 @@ import com.ecommerce.domain.Product;
 import com.ecommerce.domain.User;
 import com.ecommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
@@ -23,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findOne(Long productId) throws IllegalArgumentException {
         return productRepository.findOne(productId);
+    }
+
+    @Override
+    public Page<Product> findAll(Integer page, Integer size) {
+        return productRepository.findAll(new PageRequest(page, size));
     }
 
     @Override

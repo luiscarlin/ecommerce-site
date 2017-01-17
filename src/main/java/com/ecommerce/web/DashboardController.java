@@ -25,7 +25,7 @@ public class DashboardController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/", "/dashboard"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public String dashboard(Model model) {
         User foundUser = userService.getLoggedInUser();
 
