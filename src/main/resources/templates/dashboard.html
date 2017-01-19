@@ -24,7 +24,7 @@
                     <script>createPlaceholderCard();</script>
 
                     <div th:each="product : ${products}">
-                        <div class="col-xs-6 col-sm-4 col-md-3" th:id="${'productCard-' + {product.id}}">
+                        <div class="col-xs-6 col-sm-4 col-md-3 thumbnail-container" th:id="${'productCard-' + {product.id}}">
                             <div class="thumbnail">
                                 <img th:src="${product.imageUrl}" />
                                 <div class="caption">

@@ -21,15 +21,15 @@
         <div class="container">
             <div class="row text-center">
                 <div th:each="product : ${products}">
-                    <div class="col-xs-6 col-sm-4 col-md-3" th:id="${'productCard-' + {product.id}}">
+                    <div class="col-xs-6 col-sm-4 col-md-3 thumbnail-container" th:id="${'productCard-' + {product.id}}">
                         <div class="thumbnail">
                             <img th:src="${product.imageUrl}" />
                             <div class="caption">
                                 <h3 th:text="${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}">$29.99</h3>
                                 <p class="description" th:text="${product.shortDescription}"></p>
                                 <p>
-                                    <button class="btn btn-primary" th:id="|product-${product.id}|">Buy Now!</button>
-                                    <button class="btn btn-default">More Info</button>
+                                    <button class="btn btn-primary" th:id="|product-${product.id}|">Buy!</button>
+                                    <button class="btn btn-default">Info</button>
                                 </p>
                             </div>
                         </div>
