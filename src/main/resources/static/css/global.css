@@ -3,20 +3,6 @@
   margin-top: -0.5em;
 }
 
-.card {
-  border: 1px solid;
-  height: 15em;
-}
-
-.card button[id*='createProduct'] {
-  margin-top: 6em;
-}
-
-.card img {
-  max-height: 8em;
-  max-width: 8em;
-}
-
 body {
   padding-top: 70px;
 }
@@ -32,6 +18,10 @@ body {
 }
 
 .thumbnail-container {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.thumbnail p {
+  overflow:hidden;
 }

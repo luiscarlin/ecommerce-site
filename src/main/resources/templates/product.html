@@ -22,7 +22,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-3">
-                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive"/>
+                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive center-block"/>
                 </div>
                 <form id="formEdit" th:action="${product.id + '/edit'}" method="post" th:object="${product}">
                     <input type="hidden" th:field="${product.id}"/>
@@ -48,7 +48,7 @@
                     </div>
                 </form>
             </div>
-            <div class="row top-buffer">
+            <div class="row cta-row">
                 <button id="saveProduct" class="btn btn-primary">Save</button>
                 <button th:id="${'deleteProduct-'+{product.id}}" class="btn btn-danger">Delete</button>
             </div>

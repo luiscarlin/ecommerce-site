@@ -30,19 +30,6 @@ $(function () {
       }
   });
 
-  $("body").on({
-    mouseenter: function () {
-      $(this).css("background-color", "rgb(228, 228, 228)");
-      $(this).children("button[id*='editButton']").removeClass("hidden");
-      $(this).children("button[id*='deleteButton']").removeClass("hidden");
-    },
-    mouseleave: function () {
-      $(this).css("background-color", "rgb(255, 255, 255)");
-      $(this).children("button[id*='editButton']").addClass("hidden");
-      $(this).children("button[id*='deleteButton']").addClass("hidden");
-    }
-  }, "div[id*='productCard']");
-
    $("body").on("click", "button[id*='createProduct']", function() {
        $.ajax({
            url: "dashboard/products",
@@ -147,7 +134,7 @@ function getProductId(obj) {
 
 function showFinishedProduct(product) {
     $("#placeholderCard4-"+product.id).after(
-        "<div class=\"col-xs-6 col-sm-4 col-md-3\" id=\"productCard-"+product.id+"\">"+
+        "<div class=\"col-xs-6 col-sm-4 col-md-3 thumbnail-container\" id=\"productCard-"+product.id+"\">"+
         "    <div class=\"thumbnail\">"+
         "        <img src='"+product.imageUrl+"'/>"+
         "        <div class=\"caption\">"+
