@@ -34,7 +34,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a th:href="@{/dashboard}">Dashboard</a></li>
                         <li><a href="#"><img class="nav-bar-item" src="/images/shopping_cart.png"/></a></li>
-                        <li class="dropdown">
+
+                        <li sec:authorize="isAnonymous()">
+                            <button class="btn btn-default" style="margin: 0.5em 2em 0em 1em;" id="login">Login</button>
+                        </li>
+
+                        <li sec:authorize="isAuthenticated()" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false"><img class="nav-bar-item" src="/images/default_user.png"/> <span
                                     class="caret"></span></a>
@@ -47,6 +52,13 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
+            <script type="text/javascript">
+                $(function() {
+                    $("#login").click(function() {
+                     window.location.href = '/login';
+                    });
+                });
+            </script>
         </nav>
     </body>
 </html>

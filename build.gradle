@@ -48,6 +48,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.projectlombok:lombok:1.16.10')
+    compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
     runtime('org.springframework.boot:spring-boot-devtools')
     runtime('mysql:mysql-connector-java')
     testCompile('org.springframework.boot:spring-boot-starter-test')
