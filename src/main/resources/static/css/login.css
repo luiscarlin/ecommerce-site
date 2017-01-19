@@ -48,10 +48,18 @@
 .omb_login .omb_loginForm  .help-block {
     color: red;
 }
+
+.omb_login .omb_loginForm  .message-block {
+    color: #428bca;
+}
 	
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
 		margin-top:10px;
  	}		
+}
+
+.output {
+    margin-top: 1em;
 }
