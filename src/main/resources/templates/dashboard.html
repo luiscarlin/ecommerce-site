@@ -21,9 +21,20 @@
         <div class="container">
             <div class="row">
                 <div id="products">
-                    <script>createPlaceholderCard();</script>
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container">
+                        <div class="thumbnail">
+                            <div class="img-container" style="background-color:#e7e7e7;"></div>
+                            <div class="caption">
+                                <div class="text-center buttons">
+                                    <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#newProductModal">
+                                        Sell Something
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div th:each="product : ${products}">
+                    <div id="all-thumbnails" th:each="product : ${products}">
                         <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container" th:id="${'productCard-' + {product.id}}">
                             <div class="thumbnail">
                                 <a href="#" >
@@ -39,6 +50,48 @@
                                         <button class="btn btn-primary btn-xs" th:id="${'editButton-'+{product.id}}">Edit</button>
                                         <button class="btn btn-danger btn-xs" th:id="${'deleteButton-'+{product.id}}">Delete</button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="newProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="newProductModalTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="newProductModalTitle">New Product Details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div id="productForm">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="imageUrl">Image URL</label>
+                                    <input name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="Image URL"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input name="title" type="text" class="form-control" id="title" placeholder="Product name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shortDescription">Short Description</label>
+                                    <textarea name="shortDescription" class="form-control" id="shortDescription" placeholder="Short description"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="longDescription">Long Description</label>
+                                    <textarea name="longDescription" class="form-control" id="longDescription" placeholder="Long description"/>
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="price">Price $</label>
+                                    <input name="price" type="text" size="5" class="form-control" id="price" placeholder="Price"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" id="addProduct">Done</button>
                                 </div>
                             </div>
                         </div>

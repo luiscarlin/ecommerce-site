@@ -22,13 +22,12 @@ public class ProductController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     @ResponseBody
-    public Product addProduct() {
+    public Product addProduct(@ModelAttribute Product product) {
         User loggedInUser = userService.getLoggedInUser();
 
-        Product productToAdd = new Product();
-        productToAdd.setUser(loggedInUser);
+        product.setUser(loggedInUser);
 
-        return productService.save(productToAdd);
+        return productService.save(product);
     }
 
     @RequestMapping(value = "{productId}", method = RequestMethod.POST)

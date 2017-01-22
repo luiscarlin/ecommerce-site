@@ -30,7 +30,7 @@ $(function () {
       }
   });
 
-   $("body").on("click", "button[id*='createProduct']", function() {
+  $("body").on("click", "button[id*='createProduct']", function() {
        $.ajax({
            url: "dashboard/products",
            type: "POST",
@@ -99,9 +99,9 @@ $(function () {
               console.log("error");
           }
        });
-   });
+    });
 
-   $("body").on("click", "button[id*='addPrice']", function() {
+    $("body").on("click", "button[id*='addPrice']", function() {
        var productId = getProductId($(this));
        var priceVal = $("#price-" + productId).val();
 
@@ -124,7 +124,32 @@ $(function () {
               console.log("error");
           }
        });
-   });
+    });
+    $("body").on("click", "button[id*='addProduct']", function() {
+        $.ajax({
+            url: "dashboard/products",
+            type: "POST",
+            data: {
+                imageUrl: $("#imageUrl").val(),
+                title: $("#title").val(),
+                shortDescription: $("#shortDescription").val(),
+                description: $("#longDescription").val(),
+                price: $('#price').val()
+            },
+            success: function(product) {
+                $('#newProductModal').modal('hide');
+                createThumbnail(product);
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+    });
+    $('#newProductModal').on('hidden.bs.modal', function () {
+        $(this).find("input,textarea,select").val('').end();
+
+    });
+
 });
 
 function getProductId(obj) {
@@ -176,4 +201,33 @@ function createPlaceholderCard() {
          "      </div>"+
          " </div>"
     )
+}
+
+function createThumbnail(product) {
+    id = product.id;
+    imageUrl = product.imageUrl ? product.imageUrl : "no image url";
+    title = product.title ? product.title : "no title";
+    shortDescription = product.shortDescription ? product.shortDescription : "no description";
+    price = product.price ? product.price : "no price";
+
+    $("#all-thumbnails").append([
+        "<div class='col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container' id='productCard-"+id+"'>",
+        "    <div class='thumbnail'>",
+        "        <a href='#' >",
+        "            <div class='img-container'>",
+        "                <img src='"+imageUrl+"'/>",
+        "            </div>",
+        "        </a>",
+        "        <div class='caption'>",
+        "            <a href='#'>"+title+"</a>",
+        "            <p class='description'>"+shortDescription+"</p>",
+        "            <p class='price'>"+price+"</p>",
+        "            <div class='text-center buttons'>",
+        "                <button class='btn btn-primary btn-xs' id='editButton-"+id+"'>Edit</button>",
+        "                <button class='btn btn-danger btn-xs' id='deleteButton-"+id+"'>Delete</button>",
+        "            </div>",
+        "        </div>",
+        "     </div>",
+        "</div>"
+    ].join("\n"));
 }
