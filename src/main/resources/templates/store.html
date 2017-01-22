@@ -19,18 +19,23 @@
         <div th:replace="fragments/header :: header"/>
 
         <div class="container">
-            <div class="row text-center">
+            <div class="row">
                 <div th:each="product : ${products}">
-                    <div class="col-xs-6 col-sm-4 col-md-3 thumbnail-container" th:id="${'productCard-' + {product.id}}">
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container" th:id="${'productCard-' + {product.id}}">
                         <div class="thumbnail">
-                            <img th:src="${product.imageUrl}" />
+                            <a href="#" >
+                                <div class="img-container">
+                                    <img th:src="${product.imageUrl}" />
+                                </div>
+                            </a>
                             <div class="caption">
-                                <h3 th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0'">$29.99</h3>
+                                <a href="#" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a>
                                 <p class="description" th:text="${product.shortDescription}"></p>
-                                <p>
-                                    <button class="btn btn-primary" th:id="|product-${product.id}|">Buy!</button>
-                                    <button class="btn btn-default">Info</button>
-                                </p>
+                                <p class="price" th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0'">$29.99</p>
+
+                                <div class="text-center buttons">
+                                    <button class="btn btn-primary btn-xs" th:id="${'addToCart-'+{product.id}}">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>

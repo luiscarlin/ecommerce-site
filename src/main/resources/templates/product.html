@@ -31,8 +31,12 @@
                             <input type="text" class="form-control" id="imageUrl1" th:field="*{imageUrl}" placeholder="Provide an image URL"/>
                         </div>
                         <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Provide a product title"/>
+                        </div>
+                        <div class="form-group">
                             <label for="shortDescription1">Short Description</label>
-                            <input type="text" class="form-control" id="shortDescription1" th:field="*{shortDescription}" placeholder="Provide a short description"/>
+                            <textarea class="form-control" id="shortDescription1" th:field="*{shortDescription}" placeholder="Provide a short description"/>
                         </div>
                         <div class="form-group">
                             <label for="longDescription1">Long Description</label>

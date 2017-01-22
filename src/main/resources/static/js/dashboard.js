@@ -152,24 +152,24 @@ function showFinishedProduct(product) {
 
 function createPlaceholderCard() { 
     $("#products").append(
-         "<div id=\"placeholderCard1-0\" class=\"col-xs-6 col-sm-4 col-md-3\">"+
+         "<div id=\"placeholderCard1-0\" class=\"col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container\">"+
          "    <div class=\"thumbnail\">"+
          "         <button id=\"createProduct-0\" class=\"btn btn-primary btn-block\">Create Product</button>"+
          "    </div>"+
          "</div>"+
-         " <div id=\"placeholderCard2-0\" class=\"col-xs-6 col-sm-4 col-md-3 hidden\">"+
+         " <div id=\"placeholderCard2-0\" class=\"col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container hidden\">"+
          "     <div class=\"thumbnail\">"+
          "          <input type=\"text\" id=\"imageUrl-0\" placeholder=\"Enter image URL\"/>"+
          "          <button id=\"addImageUrl-0\" class=\"btn btn-primary btn-block\">Next</button>"+
          "     </div>"+
          " </div>"+
-         " <div id=\"placeholderCard3-0\" class=\"col-xs-6 col-sm-4 col-md-3 hidden\">"+
+         " <div id=\"placeholderCard3-0\" class=\"col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container hidden\">"+
          "     <div class=\"thumbnail\">"+
          "           <input type=\"text\" id=\"shortDescription-0\" placeholder=\"Enter short product description\"/>"+
          "           <button id=\"addShortDescription-0\" class=\"btn btn-primary btn-block\">Next</button>"+
          "     </div>"+
          " </div>"+
-         " <div id=\"placeholderCard4-0\" class=\"col-xs-6 col-sm-4 col-md-3 hidden\">"+
+         " <div id=\"placeholderCard4-0\" class=\"col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container hidden\">"+
          "      <div class=\"thumbnail\">"+
          "           <input type=\"text\" id=\"price-0\" placeholder=\"Enter price\"/>"+
          "           <button id=\"addPrice-0\" class=\"btn btn-primary btn-block\">Finish</button>"+
