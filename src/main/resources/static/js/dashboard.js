@@ -145,10 +145,16 @@ $(function () {
             }
         });
     });
+
     $('#newProductModal').on('hidden.bs.modal', function () {
         $(this).find("input,textarea,select").val('').end();
 
     });
+
+      $("#price").change(function () {
+        var val = $(this).val();
+        $(this).val(parseFloat(val).toFixed(2));
+      });
 
 });
 
@@ -208,7 +214,7 @@ function createThumbnail(product) {
     imageUrl = product.imageUrl ? product.imageUrl : "no image url";
     title = product.title ? product.title : "no title";
     shortDescription = product.shortDescription ? product.shortDescription : "no description";
-    price = product.price ? product.price : "no price";
+    price = product.price ? parseFloat(product.price).toFixed(2) : "0.00";
 
     $("#all-thumbnails").append([
         "<div class='col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container' id='productCard-"+id+"'>",
@@ -221,7 +227,7 @@ function createThumbnail(product) {
         "        <div class='caption'>",
         "            <a href='#'>"+title+"</a>",
         "            <p class='description'>"+shortDescription+"</p>",
-        "            <p class='price'>"+price+"</p>",
+        "            <p class='price'>$"+price+"</p>",
         "            <div class='text-center buttons'>",
         "                <button class='btn btn-primary btn-xs' id='editButton-"+id+"'>Edit</button>",
         "                <button class='btn btn-danger btn-xs' id='deleteButton-"+id+"'>Delete</button>",

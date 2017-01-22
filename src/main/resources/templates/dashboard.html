@@ -45,7 +45,7 @@
                                 <div class="caption">
                                     <a href="#" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a>
                                     <p class="description" th:text="${product.shortDescription}"></p>
-                                    <p class="price" th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0'">$29.99</p>
+                                    <p class="price" th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0.00'">$29.99</p>
                                     <div class="text-center buttons">
                                         <button class="btn btn-primary btn-xs" th:id="${'editButton-'+{product.id}}">Edit</button>
                                         <button class="btn btn-danger btn-xs" th:id="${'deleteButton-'+{product.id}}">Delete</button>
