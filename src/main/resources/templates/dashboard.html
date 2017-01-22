@@ -39,11 +39,11 @@
                             <div class="thumbnail">
                                 <a href="#" >
                                     <div class="img-container">
-                                        <img th:src="${product.imageUrl}" />
+                                        <img class="center-block" th:src="${product.imageUrl}" />
                                     </div>
                                 </a>
                                 <div class="caption">
-                                    <a href="#" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a>
+                                    <div class="title"><a href="#" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a></div>
                                     <p class="description" th:text="${product.shortDescription}"></p>
                                     <p class="price" th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0.00'">$29.99</p>
                                     <div class="text-center buttons">
