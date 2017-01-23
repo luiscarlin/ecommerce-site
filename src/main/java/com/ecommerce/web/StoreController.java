@@ -1,6 +1,5 @@
 package com.ecommerce.web;
 
-import com.ecommerce.domain.Cart;
 import com.ecommerce.domain.Product;
 import com.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,9 @@ public class StoreController {
     }
 
     @PostMapping(value = "/cart/products/{productId}")
-    public @ResponseBody String addProductToCart(@PathVariable Long productId, ModelMap model) {
+    public
+    @ResponseBody
+    String addProductToCart(@PathVariable Long productId, ModelMap model) {
 
         return "{\"success\": true}";
     }
