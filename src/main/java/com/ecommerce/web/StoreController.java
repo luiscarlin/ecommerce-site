@@ -31,10 +31,8 @@ public class StoreController {
         return "prod_details";
     }
 
-    @PostMapping(value = "/cart/products/{productId}")
-    public
-    @ResponseBody
-    String addProductToCart(@PathVariable Long productId, ModelMap model) {
+    @PostMapping(value = "/products/{productId}")
+    public @ResponseBody String addProductToCart(@PathVariable Long productId, ModelMap model) {
 
         return "{\"success\": true}";
     }
