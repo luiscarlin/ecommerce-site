@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="/css/global.css"/>
+        <link rel="stylesheet" href="/css/prod_details.css"/>
 
         <!-- js -->
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -19,17 +20,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-3">
-                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive center-block"/>
+                    <div class="image-container">
+                        <img th:src="${product.imageUrl}" class="img-responsive center-block"/>
+                    </div>
                 </div>
                 <div th:object="${product}">
-                    <div class="col-xs-12 col-sm-5">
-                        <p th:text="${product.title}"></p>
-                        <p th:text="${product.shortDescription}"></p>
-                        <p th:text="${product.description}"></p>
+                    <div class="col-xs-12 col-sm-7">
+                        <div class="page-header">
+                            <h1 th:text="${product.title}">Title</h1>
+                            <h4 th:text="${product.shortDescription}">Subtitle</h4>
+                        </div>
+                        <div>
+                            <p th:text="${product.description}">Description</p>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-offset-1 col-sm-3">
-                        <p th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0.00'">$29.99</p>
-                        <button class="btn btn-primary">Add To Cart</button>
+                    <div class="col-xs-12 col-sm-2">
+                        <div class="price-col">
+                            <p th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0.00'">$29.99</p>
+                            <button class="btn btn-primary">Add To Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>

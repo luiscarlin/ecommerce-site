@@ -40,6 +40,9 @@ public class Product {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products", fetch = FetchType.EAGER)
     private Set<Cart> carts = new HashSet<Cart>();
 
+    @ManyToMany(cascade=CascadeType.ALL, mappedBy="products", fetch=FetchType.EAGER)
+    private Set<Order> orders = new HashSet<>();
+
     @Override
     public int hashCode() {
         final int prime = 31;

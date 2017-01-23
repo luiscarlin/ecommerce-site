@@ -1,15 +1,13 @@
 package com.ecommerce.web;
 
+import com.ecommerce.domain.Cart;
 import com.ecommerce.domain.Product;
 import com.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StoreController {
@@ -32,5 +30,11 @@ public class StoreController {
         model.put("product", productToView);
 
         return "prod_details";
+    }
+
+    @PostMapping(value = "/cart/products/{productId}")
+    public @ResponseBody String addProductToCart(@PathVariable Long productId, ModelMap model) {
+
+        return "{\"success\": true}";
     }
 }

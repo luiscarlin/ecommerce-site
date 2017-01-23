@@ -55,4 +55,7 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
     private Cart cart;
+
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="user")
+    private Set<Order> orders = new HashSet<>();
 }
