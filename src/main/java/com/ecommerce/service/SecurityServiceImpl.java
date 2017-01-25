@@ -3,6 +3,7 @@ package com.ecommerce.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,14 +24,29 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public String findLoggedInUsername() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        if (auth != null) {
-            return auth.getName();
+        if (isAnonymous()) {
+            LOGGER.info("This is an anonymous user");
+            return null;
         }
-        LOGGER.warn("Could not find currently authenticated user");
 
-        return null;
+        return getAuthentication().getName();
+    }
+
+    @Override
+    public boolean isAnonymous() {
+        Authentication auth = getAuthentication();
+
+        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            LOGGER.info("There is a logged in user");
+            return false;
+        }
+
+        LOGGER.info("This is an anonymous user");
+        return true;
+    }
+
+    private Authentication getAuthentication() {
+        return SecurityContextHolder.getContext().getAuthentication();
     }
 
     @Override

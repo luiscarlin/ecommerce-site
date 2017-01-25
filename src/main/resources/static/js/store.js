@@ -12,7 +12,7 @@ $(function () {
     id = id.split("-")[1];
 
     $.post({
-      url: "/products/" + id,
+      url: "/cart/products/" + id,
       success: function (cart) {
         console.log(cart);
       },
