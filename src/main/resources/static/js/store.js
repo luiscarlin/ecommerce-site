@@ -14,7 +14,15 @@ $(function () {
     $.post({
       url: "/cart/products/" + id,
       success: function (cart) {
-        console.log(cart);
+        if (cart) {
+          console.log("you are logged in");
+          console.log(cart);
+        }
+        else {
+          console.log("not logged in");
+          console.log("redirect to login page")
+          window.location = "/login";
+        }
       },
       error: function() {
         console.log("error");

@@ -1,7 +1,6 @@
 package com.ecommerce.web;
 
 import com.ecommerce.domain.Cart;
-import com.ecommerce.domain.User;
 import com.ecommerce.service.SecurityService;
 import com.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
