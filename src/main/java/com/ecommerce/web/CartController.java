@@ -59,10 +59,12 @@ public class CartController {
             user.setCart(userCart);
             userCart.setUser(user);
             userCart = cartService.save(userCart);
+            user = userService.save(user);
+            LOGGER.info("user={} now has cartId={}", user.getEmail(), user.getCart().getId());
+            LOGGER.info("cartId={} now has user={}", userCart.getId(), userCart.getUser().getEmail());
         }
-        else {
-            productsInCart.addAll(userCart.getProducts());
-        }
+
+        productsInCart.addAll(userCart.getProducts());
 
         LOGGER.info("user={} had these products in cart={}", user.getEmail(),
                 productsInCart.stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
@@ -79,7 +81,7 @@ public class CartController {
         userCart.setProducts(productsInCart);
         userCart.setDateAdded(new Date());
         userCart = cartService.save(userCart);
-        LOGGER.info("products associated to this cart-={}",
+        LOGGER.info("products associated to this cart={}",
                userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
 
         return userCart;
