@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,7 +39,8 @@ public class CartController {
     ProductService productService;
 
     @PostMapping(value = "/cart/products/{productId}")
-    public @ResponseBody Cart addProductToCart(@PathVariable Long productId, ModelMap model) {
+    @ResponseBody
+    public Cart addProductToCart(@PathVariable Long productId) {
 
         LOGGER.info("Adding product={} to user cart", productId);
 
@@ -52,7 +54,7 @@ public class CartController {
 
         Set<Product> productsInCart = new HashSet<Product>();
 
-        if (userCart == null)  {
+        if (userCart == null) {
             LOGGER.info("The user cart does not exist. Creating one.");
             userCart = new Cart();
 
@@ -82,8 +84,22 @@ public class CartController {
         userCart.setDateAdded(new Date());
         userCart = cartService.save(userCart);
         LOGGER.info("products associated to this cart={}",
-               userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
+                userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
 
         return userCart;
+    }
+
+    @GetMapping(value = "/cart/products")
+    @ResponseBody
+    public Cart getCart() {
+
+        User user = userService.getLoggedInUser();
+
+        if (user == null) {
+            LOGGER.info("The user has not logged in");
+            return null;
+        }
+
+        return user.getCart();
     }
 }

@@ -15,12 +15,12 @@ $(function () {
       url: "/cart/products/" + id,
       success: function (cart) {
         if (cart) {
-          console.log("you are logged in");
           console.log(cart);
+          var cartSize = cart.products.length;
+          $("#cart-quantity").text(cartSize);
         }
         else {
           console.log("not logged in");
-          console.log("redirect to login page")
           window.location = "/login";
         }
       },

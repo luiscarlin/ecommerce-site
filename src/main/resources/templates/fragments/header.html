@@ -30,7 +30,12 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a th:href="@{/dashboard}">Dashboard</a></li>
-                        <li><a href="#"><img class="nav-bar-item" src="/images/shopping_cart.png"/></a></li>
+                        <li>
+                            <a href="#">
+                                <img class="nav-bar-item" src="/images/shopping_cart.png"/>
+                                <span id="cart-quantity" class="badge"></span>
+                            </a>
+                        </li>
 
                         <li sec:authorize="isAnonymous()">
                             <button class="btn btn-default" style="margin: 0.5em 2em 0em 1em;" id="login">Login</button>
@@ -51,6 +56,21 @@
             </div><!-- /.container-fluid -->
             <script type="text/javascript">
                 $(function() {
+                    $.ajax({
+                        url: '/cart/products',
+                        type: 'json',
+                        method: 'get',
+                        success : function (cart) {
+                            if (cart) {
+                                var cartSize = cart.products.length;
+                                $("#cart-quantity").text(cartSize);
+                            }
+                        },
+                        error : function () {
+                            console.log("Error getting user cart");
+                        }
+                    });
+
                     $("#login").click(function() {
                      window.location.href = '/login';
                     });
