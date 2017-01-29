@@ -56,12 +56,9 @@ public class CartController {
 
         if (userCart == null) {
             LOGGER.info("The user cart does not exist. Creating one.");
-            userCart = new Cart();
 
-            user.setCart(userCart);
-            userCart.setUser(user);
-            userCart = cartService.save(userCart);
-            user = userService.save(user);
+            userCart = userService.createCartForUser(user.getId());
+
             LOGGER.info("user={} now has cartId={}", user.getEmail(), user.getCart().getId());
             LOGGER.info("cartId={} now has user={}", userCart.getId(), userCart.getUser().getEmail());
         }
@@ -101,5 +98,25 @@ public class CartController {
         }
 
         return user.getCart();
+    }
+
+    @GetMapping(value = "/cart")
+    public String myCart(ModelMap model) {
+
+        User user = userService.getLoggedInUser();
+
+        if (user == null) {
+            return null;
+        }
+
+        Cart cart = user.getCart();
+
+        if (cart == null) {
+            cart = userService.createCartForUser(user.getId());
+        }
+
+        model.put("cart", cart);
+
+        return "cart";
     }
 }

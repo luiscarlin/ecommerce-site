@@ -1,9 +1,11 @@
 package com.ecommerce.service;
 
+import com.ecommerce.domain.Cart;
 import com.ecommerce.domain.Role;
 import com.ecommerce.domain.User;
 import com.ecommerce.repository.RoleRepository;
 import com.ecommerce.repository.UserRepository;
+import javafx.scene.canvas.GraphicsContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SecurityService securityService;
+
+    @Autowired
+    private CartService cartService;
 
     @Override
     public User save(User user) {
@@ -76,5 +81,19 @@ public class UserServiceImpl implements UserService {
         }
 
         return loggedInUser;
+    }
+
+    @Override
+    public Cart createCartForUser(Long userId) {
+        User user = userRepository.findOne(userId);
+        Cart cart = new Cart();
+
+        user.setCart(cart);
+        cart.setUser(user);
+
+        cart = cartService.save(cart);
+        save(user);
+
+        return cart;
     }
 }

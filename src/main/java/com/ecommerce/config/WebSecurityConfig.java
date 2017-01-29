@@ -29,7 +29,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/register", "/").permitAll()
                     .antMatchers("/products/**").permitAll()
-                    .antMatchers("/cart/**").permitAll()
+                    .antMatchers("/cart/products/**").permitAll()
                     .antMatchers("/css/**").permitAll()
                     .antMatchers("/js/**").permitAll()
                     .antMatchers("/images/**").permitAll()
