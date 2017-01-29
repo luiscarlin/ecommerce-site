@@ -79,7 +79,7 @@ public class CartController {
         userCart.setProducts(productsInCart);
         userCart.setDateAdded(new Date());
         userCart = cartService.save(userCart);
-       LOGGER.info("products associated to this cart-={}",
+        LOGGER.info("products associated to this cart-={}",
                userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
 
         return userCart;
