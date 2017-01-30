@@ -5,7 +5,6 @@ import com.ecommerce.domain.Role;
 import com.ecommerce.domain.User;
 import com.ecommerce.repository.RoleRepository;
 import com.ecommerce.repository.UserRepository;
-import javafx.scene.canvas.GraphicsContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
