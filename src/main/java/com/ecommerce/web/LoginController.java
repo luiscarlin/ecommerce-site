@@ -48,7 +48,7 @@ public class LoginController {
 
         try {
             LOGGER.debug("Persisting user with email={}", userForm.getEmail());
-            userService.save(userForm);
+            userService.saveNew(userForm);
 
         } catch (DataIntegrityViolationException e) {
             // probably email already exists - very rare case when multiple admins are adding same user

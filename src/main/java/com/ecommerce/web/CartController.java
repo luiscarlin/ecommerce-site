@@ -88,7 +88,7 @@ public class CartController {
 
     @GetMapping(value = "/cart/products")
     @ResponseBody
-    public Cart getCart() {
+    public Cart getCartItems() {
 
         User user = userService.getLoggedInUser();
 
@@ -101,7 +101,7 @@ public class CartController {
     }
 
     @GetMapping(value = "/cart")
-    public String myCart(ModelMap model) {
+    public String getCart(ModelMap model) {
 
         User user = userService.getLoggedInUser();
 

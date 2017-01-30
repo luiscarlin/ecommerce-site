@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     private CartService cartService;
 
     @Override
-    public User save(User user) {
+    public User saveNew(User user) {
         LOGGER.debug("Persisting user with email={}", user.getEmail());
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -91,8 +91,13 @@ public class UserServiceImpl implements UserService {
         cart.setUser(user);
 
         cart = cartService.save(cart);
-        save(user);
+        userRepository.save(user);
 
         return cart;
+    }
+
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
     }
 }
