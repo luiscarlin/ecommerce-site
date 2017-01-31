@@ -77,7 +77,7 @@ function createThumbnail(product) {
     "    <div class='thumbnail'>",
     "        <a href='#' >",
     "            <div class='img-container'>",
-    "                <img class='center-block' src='"+imageUrl+"'/>",
+    "                <img class='center-block' src='"+imageUrl+"' onerror=\"this.src='/images/default_product.jpg'\"/>",
     "            </div>",
     "        </a>",
     "        <div class='caption'>",
