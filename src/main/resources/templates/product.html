@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-3">
-                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive center-block"/>
+                    <img stye="width: 20em; height: 100%" th:src="${product.imageUrl}" class="img-responsive center-block" onerror="this.src='/images/default_product.jpg'"/>
                 </div>
                 <form id="formEdit" th:action="${product.id + '/edit'}" method="post" th:object="${product}">
                     <input type="hidden" th:field="${product.id}"/>

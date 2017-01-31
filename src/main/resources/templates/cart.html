@@ -25,7 +25,7 @@
             <div class="row" id="product-row" th:each="product : ${cart.products}">
                 <div class="col-xs-12 col-sm-2">
                     <div class="image-col">
-                        <img th:src="${product.imageUrl}" class="img-responsive center-block"/>
+                        <img th:src="${product.imageUrl}" class="img-responsive center-block" onerror="this.src='/images/default_product.jpg'"/>
                     </div>
                 </div>
 
