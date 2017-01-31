@@ -1,24 +1,47 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>eCommerce: Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <head>
+        <title>eCommerce: Store</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <!-- css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="/css/global.css"/>
+        <!-- css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/css/global.css"/>
+        <link rel="stylesheet" href="/css/cart.css"/>
 
-    <!-- js -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div th:replace="fragments/header :: header"/>
+        <!-- js -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div th:replace="fragments/header :: header"/>
 
-    <div class="container">
-      <div class="row">
-      </div>
-    </div>
-  </body>
+        <div class="container">
+            <div class="row center-block">
+                <h1>(<span th:text="${cart.products.size()}"/>) items in your cart</h1>
+            </div>
+            <hr />
+            <div class="row" id="product-row" th:each="product : ${cart.products}">
+                <div class="col-xs-12 col-sm-2">
+                    <div class="image-col">
+                        <img th:src="${product.imageUrl}" class="img-responsive center-block"/>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="description-col">
+                         <div th:text="${product.shortDescription}"/>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <div class="price-col">
+                        <div th:text="${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"/>
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </div>
+    </body>
 </html>
