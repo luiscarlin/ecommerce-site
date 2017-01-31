@@ -24,7 +24,7 @@
                         <div class="thumbnail">
                             <a th:href="${'/products/' + {product.id}}">
                                 <div class="img-container">
-                                    <img class="center-block" th:src="${product.imageUrl}" onerror="this.src='/images/default_product.jpg'"/>
+                                    <img class="center-block" th:src="${product.imageUrl}" onerror="this.onerror=null;this.src='/images/default_product.jpg';"/>
                                 </div>
                             </a>
                             <div class="caption">

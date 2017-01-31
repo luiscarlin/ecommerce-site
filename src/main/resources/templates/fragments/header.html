@@ -29,9 +29,12 @@
                     </form>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a th:href="@{/dashboard}">Dashboard</a></li>
+                        <li sec:authorize="isAuthenticated()">
+                            <div class="navbar-text hello">Hello, <span sec:authentication="name"></span></div>
+                        </li>
+                        <li><a th:href="@{/dashboard}" class="navbar-link">Dashboard</a></li>
                         <li>
-                            <a th:href="@{/cart}">
+                            <a th:href="@{/cart}" class="navbar-link">
                                 <img class="nav-bar-item" src="/images/shopping_cart.png"/>
                                 <span id="cart-quantity" class="badge"></span>
                             </a>
