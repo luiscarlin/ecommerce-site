@@ -115,7 +115,7 @@ public class CartController {
             cart = userService.createCartForUser(user.getId());
         }
 
-        model.put("cart", cart);
+        model.put("myCart", cart);
 
         return "cart";
     }

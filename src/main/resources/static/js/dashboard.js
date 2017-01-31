@@ -72,7 +72,7 @@ function createThumbnail(product) {
   var shortDescription = product.shortDescription ? product.shortDescription : "no description";
   var price = product.price ? parseFloat(product.price).toFixed(2) : "0.00";
 
-  $("#all-thumbnails").append([
+  $("#products").append([
     "<div class='col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container' id='productCard-"+id+"'>",
     "    <div class='thumbnail'>",
     "        <a href='#' >",
