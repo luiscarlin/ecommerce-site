@@ -51,7 +51,14 @@ public class CartController {
             cart = userService.createCartForUser(user.getId());
         }
 
+        double total = 0;
+
+        for(Product product : cart.getProducts()) {
+            total += product.getPrice();
+        }
+
         model.put("cart", cart);
+        model.put("total", total);
 
         return "cart";
     }
