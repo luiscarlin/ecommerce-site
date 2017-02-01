@@ -19,10 +19,10 @@
 
         <div class="container">
             <div class="row center-block">
-                <h1>(<span th:text="${cart.products.size()}"/>) items in your cart</h1>
+                <h2>(<span th:text="${cart.products.size()}"/>) items in your cart</h2>
             </div>
             <hr />
-            <div class="row" id="product-row" th:each="product : ${cart.products}">
+            <div class="row center-block" id="product-row" th:each="product : ${cart.products}">
                 <div class="col-xs-12 col-sm-2">
                     <div class="image-col">
                         <img th:src="${product.imageUrl}" class="img-responsive center-block" onerror="this.src='/images/default_product.jpg'"/>
@@ -42,6 +42,10 @@
                 </div>
             </div>
             <hr />
+            <div class="row center-block">
+
+
+            </div>
         </div>
     </body>
 </html>
