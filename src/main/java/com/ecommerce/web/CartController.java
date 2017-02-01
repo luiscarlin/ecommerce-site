@@ -12,10 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,6 +20,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Controller
+@RequestMapping("/cart")
 public class CartController {
     private static final Logger LOGGER = LoggerFactory.getLogger(CartController.class);
 
@@ -38,7 +36,41 @@ public class CartController {
     @Autowired
     ProductService productService;
 
-    @PostMapping(value = "/cart/products/{productId}")
+    @GetMapping(value = "")
+    public String getCart(ModelMap model) {
+
+        User user = userService.getLoggedInUser();
+
+        if (user == null) {
+            return null;
+        }
+
+        Cart cart = user.getCart();
+
+        if (cart == null) {
+            cart = userService.createCartForUser(user.getId());
+        }
+
+        model.put("cart", cart);
+
+        return "cart";
+    }
+
+    @GetMapping(value = "/products")
+    @ResponseBody
+    public Cart getCartItems() {
+
+        User user = userService.getLoggedInUser();
+
+        if (user == null) {
+            LOGGER.info("The user has not logged in");
+            return null;
+        }
+
+        return user.getCart();
+    }
+
+    @PostMapping(value = "/products/{productId}")
     @ResponseBody
     public Cart addProductToCart(@PathVariable Long productId) {
 
@@ -84,39 +116,5 @@ public class CartController {
                 userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
 
         return userCart;
-    }
-
-    @GetMapping(value = "/cart/products")
-    @ResponseBody
-    public Cart getCartItems() {
-
-        User user = userService.getLoggedInUser();
-
-        if (user == null) {
-            LOGGER.info("The user has not logged in");
-            return null;
-        }
-
-        return user.getCart();
-    }
-
-    @GetMapping(value = "/cart")
-    public String getCart(ModelMap model) {
-
-        User user = userService.getLoggedInUser();
-
-        if (user == null) {
-            return null;
-        }
-
-        Cart cart = user.getCart();
-
-        if (cart == null) {
-            cart = userService.createCartForUser(user.getId());
-        }
-
-        model.put("cart", cart);
-
-        return "cart";
     }
 }

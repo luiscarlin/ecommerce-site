@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,8 +26,8 @@ public class DashboardController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public String dashboard(Model model) {
+    @GetMapping(value = "/dashboard")
+    public String getDashboard(Model model) {
         User foundUser = userService.getLoggedInUser();
 
         List<Product> products = productService.findByUser(foundUser);

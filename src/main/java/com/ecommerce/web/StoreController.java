@@ -10,7 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/store")
@@ -21,7 +20,7 @@ public class StoreController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping(value = "")
     public String getStore(ModelMap model) {
 
         Page<Product> productPage = productService.findAll(0, 10);

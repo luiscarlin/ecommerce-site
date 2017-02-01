@@ -20,7 +20,7 @@ public class ProductController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @PostMapping(value = "")
     @ResponseBody
     public Product addProduct(@ModelAttribute Product product) {
         User loggedInUser = userService.getLoggedInUser();
@@ -30,7 +30,7 @@ public class ProductController {
         return productService.save(product);
     }
 
-    @RequestMapping(value = "{productId}", method = RequestMethod.POST)
+    @PostMapping(value = "{productId}")
     @ResponseBody
     public Product updateProduct(@PathVariable Long productId, @RequestParam String fieldName, @RequestParam String fieldValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
@@ -39,7 +39,7 @@ public class ProductController {
         return productService.updateField(productToUpdate, fieldName, fieldValue);
     }
 
-    @RequestMapping(value = "{productId}", method = RequestMethod.GET)
+    @GetMapping(value = "{productId}")
     public String editProduct(@PathVariable Long productId, ModelMap model) {
         Product productToEdit = productService.findOne(productId);
         model.put("product", productToEdit);
@@ -47,7 +47,7 @@ public class ProductController {
         return "product";
     }
 
-    @RequestMapping(value = "{productId}/edit", method = RequestMethod.POST)
+    @PostMapping(value = "{productId}/edit")
     public String editProduct(@PathVariable Long productId, ModelMap model, @ModelAttribute("product") Product product) {
 
         product.setUser(userService.getLoggedInUser());
@@ -58,7 +58,7 @@ public class ProductController {
         return "redirect:/dashboard/products/" + product.getId();
     }
 
-    @RequestMapping(value = "{productId}/delete", method = RequestMethod.POST)
+    @PostMapping(value = "{productId}/delete")
     public String deleteProduct(@PathVariable Long productId, ModelMap model) {
 
         Product productToDelete = productService.findOne(productId);
