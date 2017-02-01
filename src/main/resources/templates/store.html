@@ -22,13 +22,13 @@
                 <div th:each="product : ${products}">
                     <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2 col-xl-1 thumbnail-container" th:id="${'productCard-' + {product.id}}">
                         <div class="thumbnail">
-                            <a th:href="${'/products/' + {product.id}}">
+                            <a th:href="${'/store/products/' + {product.id}}">
                                 <div class="img-container">
                                     <img class="center-block" th:src="${product.imageUrl}" onerror="this.onerror=null;this.src='/images/default_product.jpg';"/>
                                 </div>
                             </a>
                             <div class="caption">
-                                <div class="title"><a th:href="${'/products/' + {product.id}}" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a></div>
+                                <div class="title"><a th:href="${'/store/products/' + {product.id}}" th:text="${product.title != null} ? ${product.title} : 'no title'">title</a></div>
                                 <p class="description" th:text="${product.shortDescription}"></p>
                                 <p class="price" th:text="${product.price != null} ? ${'$'+#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} : '$0.00'">$29.99</p>
 

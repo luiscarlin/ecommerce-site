@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/store")
 public class StoreController {
     @Autowired
     ProductService productService;
@@ -20,8 +21,8 @@ public class StoreController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String root(ModelMap model) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String getStore(ModelMap model) {
 
         Page<Product> productPage = productService.findAll(0, 10);
         model.put("products", productPage);
