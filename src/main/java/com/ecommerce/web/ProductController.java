@@ -41,7 +41,12 @@ public class ProductController {
 
     @GetMapping(value = "{productId}")
     public String editProduct(@PathVariable Long productId, ModelMap model) {
+
         Product productToEdit = productService.findOne(productId);
+
+        if (productToEdit.getUser().getId() != userService.getLoggedInUser().getId()) {
+            return "403";
+        }
         model.put("product", productToEdit);
 
         return "product";
