@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -123,5 +124,23 @@ public class CartController {
                 userCart.getProducts().stream().map(prod -> prod.getId().toString()).collect(Collectors.joining(",")));
 
         return userCart;
+    }
+
+    @PostMapping(value = "/purchase")
+    public String purchageCart() {
+        User user = userService.getLoggedInUser();
+
+        Cart cart = user.getCart();
+
+        Iterator<Product> itr = cart.getProducts().iterator();
+
+        while(itr.hasNext()) {
+            Product product = itr.next();
+            product.getCarts().remove(cart);
+            itr.remove();
+        }
+        cartService.save(cart);
+
+        return "redirect:/";
     }
 }
